@@ -8,8 +8,6 @@ vim.keymap.set("n", "<leader>yy", '"+y', { desc = "Copy Line To Clipboard" })
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy To Clipboard" })
 
 -- Quickfix
---vim.keymap.set("n", "<S-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
--- vim.keymap.set("n", "<S-p>", "<cmd>cprev<CR>", { desc = "Previous quickfix item" })
 local function quickfix_open()
 	return vim.fn.getqflist({ winid = 0 }).winid ~= 0
 end
@@ -43,3 +41,11 @@ end, { desc = "Toggle Quickfix list" })
 
 -- Save
 vim.keymap.set("n", "ss", "<leader>:w<cr>", { desc = "Save file" })
+vim.keymap.set("n", "sq", "<leader>:wq<cr>", { desc = "Save file" })
+vim.keymap.set("n", "qq", "<leader>:q<cr>", { desc = "Save file" })
+
+local rln = false
+vim.keymap.set("n", "<leader>l", function()
+	rln = not rln
+	vim.opt.relativenumber = rln
+end, { desc = "Toggle relative line numbers" })
